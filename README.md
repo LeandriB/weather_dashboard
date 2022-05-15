@@ -39,7 +39,7 @@ View a [live preview](DEPLOYED PAGE LINK GOES HERE) of our project.
 ## Attributions
 
 * [openweather API](https://openweathermap.org/)
-* [Bootstrap] ()
+* [dayjs] (https://day.js.org/en/)
 * [Bootstrap Icons](https://icons.getbootstrap.com/#install)
 
 

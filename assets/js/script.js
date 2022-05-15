@@ -7,7 +7,14 @@ var searchHistory = document.getElementById("searchHistory")
 var currentDay = document.getElementById("selectedCity")
 var fiveDays = document.getElementById("fiveDays")
 
+var onFormSubmit = function(event) {
 
+    event.preventDefault();
+
+    console.log("click")
+}
+
+// Get data for user identified city
 var getCityInfo = function(city) {
 
     var queryURL = "https://api.openweathermap.org/data/2.5/weather?q=" + city + "&appid=" + apiKey;
@@ -15,13 +22,34 @@ var getCityInfo = function(city) {
     fetch(queryURL).then(function(response){
         if (response.ok) {
             response.json().then(function(data){
-                // TODO: Call function here to retrieve weather data for specific city
+                var latitude = data.coord.lat;
+                var longitude = date.coord.lon;
+                getWeather(latitude, longitude)
             })
         } else {
             alert("Couldn't find city. Try again")
         }
     })
 }
+// Get weather data based on city user selected
+var getWeatherInfo = function(latitude, longitude) {
+
+    var queryURL = "https://api.openweathermap.org/data/2.5/onecall?lat=" + latitude + "&lon=" + longitude + "&units=imperial&appid=" + apiKey;
+
+    fetch(queryURL).then(function(response){
+        if (response.ok){
+            response.json().then(function(data){
+                console.log(data);
+            })
+        }
+        else{
+            alert("Couldn't find city. Try again")
+        }
+    })
+}
+
+// Event Listeners
+searchCityName.addEventListener("submit", onFormSubmit);
 
 
 
