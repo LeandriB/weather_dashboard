@@ -3,10 +3,10 @@ var apiKey = "2d9b25ee134843d01ae430cf350f205b";
 var today = moment().format("L");
 
 var citySearched = $("#searchCity");
-var searchHistoryList = [];
+var searchHistory = [];
 
 
-// function for current condition
+// Function for getting city data from API
 var getCityInfo = function(city) {
 
     var queryURL = "https://api.openweathermap.org/data/2.5/weather?q=" + city + "&units=imperial&appid=" + apiKey;
@@ -130,13 +130,27 @@ var forecast = function(latitude, longitude) {
 }
 
 
-// Event Listeners 
+// Event Listeners and localStorage
 $("#searchButton").on("click", function(event) {
     event.preventDefault();
 
     var city = citySearched.val().trim();
     getCityInfo(city);
+    if (!searchHistory.includes(city)) {
+        searchHistory.push(city);
+        var searchedCity = $(`
+            <li class="list-group-item">${city}</li>
+            `);
+        $("#searchHistory").append(searchedCity);
+    };
+    
+    localStorage.setItem("city", JSON.stringify(searchHistory));
+    console.log(searchHistory);;
 });
 
+$(document).on("click", ".list-group-item", function() {
+    var listCity = $(this).text();
+    getCityInfo(listCity);
+});
 
 
