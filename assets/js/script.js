@@ -1,6 +1,6 @@
 // Global Variables
 var apiKey = "2d9b25ee134843d01ae430cf350f205b";
-var today = dayjs().format('MM/DD/YYYY')
+var today = moment().format("L");
 
 var citySearched = $("#searchCity");
 var searchHistoryList = [];
@@ -65,8 +65,8 @@ var getWeatherInfo = function(latitude, longitude) {
 
             $("#cityInfo").append(uvIndexEl);
 
-            // TODO: Call 5 day forecast
-            // forecast(latitude, longitude);
+            // Call 5 day forecast
+            forecast(latitude, longitude);
 
             if (uvI >= 0 && uvI <= 2) {
                 $("#uvIColor").css("background-color", "#3EA72D").css("color", "white");
@@ -87,6 +87,47 @@ var getWeatherInfo = function(latitude, longitude) {
 }
 
 // TODO: Declare function to get 5 day forecast
+var forecast = function(latitude, longitude) {
+
+    var queryURL = "https://api.openweathermap.org/data/2.5/onecall?lat=" + latitude + "&lon=" + longitude + "&units=imperial&exclude=current,minutely,hourly,alerts&appid=" + apiKey
+
+    fetch(queryURL).then(function(response) {
+        if(response.ok) {
+            response.json().then(function(data) {
+                console.log(response);
+                $("#fiveDayForecast").empty();
+        
+                for (let i = 1; i < 6; i++) {
+                    var cityInfo = {
+                        date: data.daily[i].dt,
+                        icon: data.daily[i].weather[0].icon,
+                        temp: data.daily[i].temp.day,
+                        humidity: data.daily[i].humidity
+                    };
+        
+                    var nextDate = moment.unix(cityInfo.date).format("MM/DD/YYYY");
+                    var iconLink = `<img src="https://openweathermap.org/img/w/${cityInfo.icon}.png" alt="${data.daily[i].weather[0].main}" />`;
+        
+                    var forecastCard = $(`
+                        <div class="pl-3">
+                            <div class="card pl-3 pt-3 mb-3 bg-primary text-light" style="width: 12rem;>
+                                <div class="card-body">
+                                    <h5>${nextDate}</h5>
+                                    <p>${iconLink}</p>
+                                    <p>Temp: ${cityInfo.temp} °F</p>
+                                    <p>Humidity: ${cityInfo.humidity}\%</p>
+                                </div>
+                            </div>
+                        <div>
+                    `);
+                    $("#fiveDayForecast").append(forecastCard);
+                }
+            
+            }
+        )};
+        
+    }); 
+}
 
 
 // Event Listeners 
