@@ -18,10 +18,10 @@
     <div class="weather-container">
         <div class="row">
             <div class="col-12" id="searchResults">
-                <form>
+                <form id="searchCity">
                     <h2>Search for a city</h2>
                     <input type="text" id="enterCity" placeholder="Enter city">
-                    <button type="button" id="searchButton" class="btn btn-primary btn-lg"><i class="bi bi-search"></i></button>
+                    <button type="submit" id="searchButton" class="btn btn-primary btn-lg"><i class="bi bi-search"></i></button>
                 </form>
             </div>
 
@@ -38,7 +38,7 @@
 
         <!-- Selected City Weather -->
         <div class="row" id="weatherInfo">
-            <div class="col-12" id="currentCity">
+            <div class="col-12" id="selectedCity">
                 <!-- TODO: Display selected city weather info here -->
             </div>
         </div>
@@ -53,7 +53,8 @@
             </div>
         </div>
     </div>
-
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <script src="https://unpkg.com/dayjs@1.8.21/dayjs.min.js"></script>
     <script src="./assets/js/script.js"></script>
 </body>
 </html>
