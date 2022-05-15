@@ -26,11 +26,11 @@ THEN I am again presented with current and future conditions for that city
 
 1. Open the 'index.html' file in a browser
 OR
-2. View a live preview of our project below
+2. View a live preview of my project below
 
 ## Live Preview
 
-View a [live preview](DEPLOYED PAGE LINK GOES HERE) of our project.
+View a [live preview](https://leandrib.github.io/weather_dashboard/) of my project.
 
 ## Screenshot
 
@@ -39,7 +39,9 @@ View a [live preview](DEPLOYED PAGE LINK GOES HERE) of our project.
 ## Attributions
 
 * [openweather API](https://openweathermap.org/)
-* [dayjs] (https://day.js.org/en/)
+* [momentjs](https://momentjs.com/docs/)
 * [Bootstrap Icons](https://icons.getbootstrap.com/#install)
+* [fetch](https://developer.mozilla.org/en-US/docs/Web/API/fetch) method
+
 
 
