@@ -12,49 +12,60 @@
     <link rel="stylesheet" href="./assets/css/styles.css">
 </head>
 <body>
-    <header>
+    <header class="col-12 text-center">
         <h1>Weather Dashboard</h1>
     </header>
-    <div class="weather-container">
-        <div class="row">
-            <div class="col-12" id="searchResults">
-                <form id="searchCity">
-                    <h2>Search for a city</h2>
-                    <input type="text" id="enterCity" placeholder="Enter city">
-                    <button type="submit" id="searchButton" class="btn btn-primary btn-lg"><i class="bi bi-search"></i></button>
-                </form>
+    <main>
+        <section class="container-fluid">
+            <div class="row">
+                <div class="col-3 bg-light pb-2 pt-3" id="searchResults">
+                    <div class="row">
+                        <div class="col-12">
+                            <h4>Search for a City:</h4>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-12">
+                            <div class="input-group">
+                                <form>
+                                    <input type="text" id="searchCity" placeholder="Enter city">
+                                    <button type="submit" id="searchButton" class="btn btn-primary"><i class="bi bi-search"></i></button>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Search History -->
+                    <div class="row mt-3">
+                        <div class="col-12">
+                            <ul id="searchHistoryList" class="list-group">
+                            <!-- TODO: Append list items here -->
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div id="weatherInfo" class="col-9 pb-4 pt-4">
+                    <!-- Selected City Weather -->
+                    <div class="row pb-3 mr-2 ml-2">
+                        <div id="cityInfo" class="col-12 border rounded px-3 py-3">
+                            <!-- TODO: Display selected city weather info here -->
+                        </div>
+                    </div>
+                    <!-- 5 day forecast -->
+                    <div class="row pb-2 pt-1">
+                        <div class="col-12 ml-2">
+                            <h3>5-Day Forecast:</h3>
+                        </div>
+                    </div>
+                    <div id="fiveDayForecast" class="row pl-2">
+                    <!-- TODO: Display 5 day forecast here -->
+                    </div>
+                </div>
             </div>
-
-        </div>
-        <!-- Search History -->
-        <div class="row">
-            <div class="col-12">
-                <ul class="list-group" id="searchHistory">
-                    <!-- TODO: Append list items here -->
-                </ul>
-
-            </div>
-        </div>
-
-        <!-- Selected City Weather -->
-        <div class="row" id="weatherInfo">
-            <div class="col-12" id="selectedCity">
-                <!-- TODO: Display selected city weather info here -->
-            </div>
-        </div>
-
-        <!-- 5 day forecast -->
-        <div class="row">
-            <div class="col-12">
-                <h3>5-day Forecast:</h3>
-            </div>
-            <div id="fiveDays">
-                <!-- TODO: Display 5 day forecast here -->
-            </div>
-        </div>
-    </div>
+        </section>
+    </main>
     <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
     <script src="https://unpkg.com/dayjs@1.8.21/dayjs.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
     <script src="./assets/js/script.js"></script>
 </body>
 </html>
