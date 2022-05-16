@@ -34,7 +34,7 @@ View a [live preview](https://leandrib.github.io/weather_dashboard/) of my proje
 
 ## Screenshot
 
-![Preview](PROJECT PREVIEW LINK GOES HERE)
+![Preview](./assets/images/preview1.png)
 
 ## Attributions
 
