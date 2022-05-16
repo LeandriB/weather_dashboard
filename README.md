@@ -40,8 +40,8 @@ View a [live preview](https://leandrib.github.io/weather_dashboard/) of my proje
 
 * [openweather API](https://openweathermap.org/)
 * [momentjs](https://momentjs.com/docs/)
-* [Bootstrap Icons](https://icons.getbootstrap.com/#install)
 * [fetch](https://developer.mozilla.org/en-US/docs/Web/API/fetch) method
+* Adding persistence with [localStorage](https://developer.mozilla.org/en-US/docs/Web/API/Window/localStorage)
 
 
 

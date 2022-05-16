@@ -14,7 +14,6 @@ var getCityInfo = function(city) {
     fetch(queryURL).then(function(response) {
         if (response.ok) {
             response.json().then(function(data) {
-                    console.log(response);
                     // Display weatherInfo data
                     $("#weatherInfo").css("display", "block");
                     $("#cityInfo").empty();
@@ -54,7 +53,6 @@ var getWeatherInfo = function(latitude, longitude) {
     fetch(queryURL).then(function(response) {
         if(response.ok) {
             response.json().then(function(data) {
-                console.log(response);
 
             var uvI = data.daily[0].uvi;
             var uvIndexEl = $(`
@@ -94,7 +92,6 @@ var forecast = function(latitude, longitude) {
     fetch(queryURL).then(function(response) {
         if(response.ok) {
             response.json().then(function(data) {
-                console.log(response);
                 $("#fiveDayForecast").empty();
         
                 for (let i = 1; i < 6; i++) {
@@ -129,7 +126,6 @@ var forecast = function(latitude, longitude) {
     }); 
 }
 
-
 // Event Listeners and localStorage
 $("#searchButton").on("click", function(event) {
     event.preventDefault();
@@ -139,7 +135,7 @@ $("#searchButton").on("click", function(event) {
     if (!searchHistory.includes(city)) {
         searchHistory.push(city);
         var searchedCity = $(`
-            <li class="list-group-item">${city}</li>
+            <li class="list-group-item text-dark text-center m-2">${city}</li>
             `);
         $("#searchHistory").append(searchedCity);
     };
@@ -151,6 +147,16 @@ $("#searchButton").on("click", function(event) {
 $(document).on("click", ".list-group-item", function() {
     var listCity = $(this).text();
     getCityInfo(listCity);
+});
+
+$(document).ready(function() {
+    var searchHistory = JSON.parse(localStorage.getItem("city"));
+
+    if (searchHistory !== null) {
+        var lastSearched = searchHistory.length - 1;
+        var searchedCity = searchHistory[lastSearched];
+        getCityInfo(searchedCity);
+    }
 });
 
 
