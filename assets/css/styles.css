@@ -1,0 +1,11 @@
+body {
+    font-family: 'Open Sans', sans-serif;
+}
+
+header {
+    background-color: #ffdf3d;
+}
+
+#weatherInfo {
+    display: none;
+}
